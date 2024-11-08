@@ -46,6 +46,7 @@ func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Diction
 	if upgrade.id != "sword_rate":
 		return
 	
-	var percent_reduction = current_upgrades["sword_rate"]["quantity"] * .1
+	var percent_reduction = current_upgrades["sword_rate"]["quantity"] * .5
+	
 	$Timer.wait_time = base_wait_time * (1 - percent_reduction)
 	$Timer.start()
