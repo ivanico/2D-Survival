@@ -4,7 +4,7 @@ const MAX_RANGE = 150
 
 @export var sword_ability : PackedScene
 
-var damage = 5
+var damage = 10
 var base_wait_time
 
 # Called when the node enters the scene tree for the first time.
