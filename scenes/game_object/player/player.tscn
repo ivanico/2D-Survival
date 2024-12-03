@@ -1,9 +1,95 @@
-[gd_scene load_steps=10 format=3 uid="uid://cotuj1iypjqsq"]
+[gd_scene load_steps=13 format=3 uid="uid://cotuj1iypjqsq"]
 
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_v555i"]
 [ext_resource type="PackedScene" uid="uid://t8whcx8w0gw6" path="res://scenes/component/health_component.tscn" id="2_aamk3"]
 [ext_resource type="PackedScene" uid="uid://yc1rxwwich21" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="2_gpiu6"]
 [ext_resource type="Texture2D" uid="uid://c83ytspsa7oyx" path="res://scenes/game_object/player/player.png" id="2_p3ncs"]
+
+[sub_resource type="Animation" id="Animation_f4fii"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vd4k3"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0872665, 0.0872665, 6.97622e-09]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(2.07053, 2.37842, 2.07053, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 0.7), Vector2(0.8, 1.3), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0dmvq"]
+_data = {
+"RESET": SubResource("Animation_f4fii"),
+"walk": SubResource("Animation_vd4k3")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eeu6i"]
 bg_color = Color(0.247059, 0.14902, 0.192157, 1)
@@ -30,6 +116,11 @@ collision_layer = 0
 motion_mode = 1
 script = ExtResource("1_v555i")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0dmvq")
+}
+
 [node name="HealthComponent" parent="." instance=ExtResource("2_aamk3")]
 
 [node name="Abilities" type="Node" parent="."]
@@ -43,9 +134,9 @@ one_shot = true
 [node name="HP" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(32, 6)
 offset_left = -16.0
-offset_top = -24.0
+offset_top = -26.0
 offset_right = 16.0
-offset_bottom = -18.0
+offset_bottom = -20.0
 pivot_offset = Vector2(16, 3)
 theme_override_styles/background = SubResource("StyleBoxFlat_eeu6i")
 theme_override_styles/fill = SubResource("StyleBoxFlat_sd4ic")
@@ -54,6 +145,7 @@ value = 0.5
 show_percentage = false
 
 [node name="PickupArea2D" type="Area2D" parent="."]
+visible = false
 position = Vector2(0, -5)
 collision_layer = 16
 collision_mask = 0
@@ -62,6 +154,7 @@ collision_mask = 0
 shape = SubResource("CircleShape2D_70w0q")
 
 [node name="CollisionArea2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 8
 
@@ -74,5 +167,6 @@ texture = ExtResource("2_p3ncs")
 offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_c4haw")
