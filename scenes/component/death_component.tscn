@@ -1,6 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0a4lx26kbtij"]
+[gd_scene load_steps=9 format=3 uid="uid://d0a4lx26kbtij"]
 
 [ext_resource type="Texture2D" uid="uid://ce8yb13f2w6ll" path="res://scenes/game_object/basic_enemy/basic_enemy.png" id="1_3vaph"]
+[ext_resource type="Script" path="res://scenes/component/death_component.gd" id="1_yvxm7"]
+
+[sub_resource type="Animation" id="Animation_vagnc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_id8es"]
 resource_name = "default"
@@ -32,21 +48,6 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_vagnc"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GPUParticles2D:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_swisp"]
 _data = {
 "RESET": SubResource("Animation_vagnc"),
@@ -65,25 +66,26 @@ particle_flag_disable_z = true
 direction = Vector3(0, -1, 0)
 spread = 10.0
 initial_velocity_min = 100.0
-initial_velocity_max = 150.0
-angular_velocity_min = -740.0
-angular_velocity_max = 740.0
-gravity = Vector3(0, 400, 0)
+initial_velocity_max = 175.0
+angular_velocity_min = -1480.0
+angular_velocity_max = 1480.0
+gravity = Vector3(0, 800, 0)
 scale_curve = SubResource("CurveTexture_5vcll")
 
 [node name="DeathComponent" type="Node2D"]
+script = ExtResource("1_yvxm7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_swisp")
 }
-autoplay = "default"
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 1
 process_material = SubResource("ParticleProcessMaterial_5c22f")
 texture = ExtResource("1_3vaph")
-lifetime = 0.6
+lifetime = 0.4
+one_shot = true
 fixed_fps = 0
 interpolate = false

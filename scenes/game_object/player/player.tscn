@@ -70,7 +70,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.0, -0.0872665, 0.0872665, 6.97622e-09]
+"values": [0.0, -0.1309, 0.1309, 6.97622e-09]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
