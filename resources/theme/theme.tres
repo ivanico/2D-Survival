@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://dk6lnngs8o4ef"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dk6lnngs8o4ef"]
 
 [ext_resource type="FontFile" uid="uid://byq24w846apjl" path="res://resources/theme/Rockboxcond12.ttf" id="1_cxflr"]
 [ext_resource type="Texture2D" uid="uid://d26ep31ns5j88" path="res://assets/ui/ui.png" id="1_rc051"]
@@ -25,6 +25,9 @@ texture_margin_right = 4.0
 texture_margin_bottom = 10.0
 region_rect = Rect2(0, 0, 16, 16)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eeu6i"]
+bg_color = Color(0.247059, 0.14902, 0.192157, 1)
+
 [resource]
 default_font = ExtResource("1_cxflr")
 default_font_size = 16
@@ -40,3 +43,4 @@ Label/constants/shadow_offset_y = 1
 Label/constants/shadow_outline_size = 1
 Label/styles/normal = SubResource("StyleBoxEmpty_4qryk")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_inwfy")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_eeu6i")
