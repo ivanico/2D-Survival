@@ -59,6 +59,7 @@ _data = {
 }
 
 [node name="EndScreen" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_yj4ut")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
