@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dk6lnngs8o4ef"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://dk6lnngs8o4ef"]
 
 [ext_resource type="FontFile" uid="uid://byq24w846apjl" path="res://resources/theme/Rockboxcond12.ttf" id="1_cxflr"]
 [ext_resource type="Texture2D" uid="uid://d26ep31ns5j88" path="res://assets/ui/ui.png" id="1_rc051"]
@@ -14,6 +14,22 @@ texture_margin_top = 1.0
 texture_margin_right = 1.0
 texture_margin_bottom = 1.0
 region_rect = Rect2(18, 2, 12, 12)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_orw62"]
+texture = ExtResource("1_rc051")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(20, 20, 8, 8)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8n3oo"]
+texture = ExtResource("1_rc051")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(4, 20, 8, 8)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4qryk"]
 
@@ -33,6 +49,10 @@ default_font = ExtResource("1_cxflr")
 default_font_size = 16
 AlternatePanelContainer/base_type = &"PanelContainer"
 AlternatePanelContainer/styles/panel = SubResource("StyleBoxTexture_8mhmx")
+Button/colors/font_color = Color(0.247059, 0.14902, 0.192157, 1)
+Button/colors/font_hover_color = Color(0.741176, 0.423529, 0.290196, 1)
+Button/styles/hover = SubResource("StyleBoxTexture_orw62")
+Button/styles/normal = SubResource("StyleBoxTexture_8n3oo")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(1, 1, 1, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://cotuj1iypjqsq"]
+[gd_scene load_steps=14 format=3 uid="uid://cotuj1iypjqsq"]
 
-[ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_v555i"]
+[ext_resource type="Script" uid="uid://ceffcauhrljvc" path="res://scenes/game_object/player/player.gd" id="1_v555i"]
 [ext_resource type="PackedScene" uid="uid://t8whcx8w0gw6" path="res://scenes/component/health_component.tscn" id="2_aamk3"]
 [ext_resource type="PackedScene" uid="uid://yc1rxwwich21" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="2_gpiu6"]
 [ext_resource type="Texture2D" uid="uid://c83ytspsa7oyx" path="res://scenes/game_object/player/player.png" id="2_p3ncs"]
+[ext_resource type="PackedScene" uid="uid://ca52vxg5olp8n" path="res://scenes/component/velocity_component.tscn" id="2_tj6oj"]
 
 [sub_resource type="Animation" id="Animation_f4fii"]
 length = 0.001
@@ -87,8 +88,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0dmvq"]
 _data = {
-"RESET": SubResource("Animation_f4fii"),
-"walk": SubResource("Animation_vd4k3")
+&"RESET": SubResource("Animation_f4fii"),
+&"walk": SubResource("Animation_vd4k3")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eeu6i"]
@@ -118,8 +119,12 @@ script = ExtResource("1_v555i")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_0dmvq")
+&"": SubResource("AnimationLibrary_0dmvq")
 }
+
+[node name="VelocityComponent" parent="." instance=ExtResource("2_tj6oj")]
+max_speed = 90
+acceleration = 25.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_aamk3")]
 
